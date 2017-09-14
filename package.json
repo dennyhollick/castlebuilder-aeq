@@ -1,0 +1,16 @@
+{
+  "name": "aequilibrium",
+  "version": "1.0.0",
+  "description": "A calculator to know how many castles we should build",
+  "main": "castles.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Denny Hollick",
+  "license": "ISC",
+  "devDependencies": {
+    "eslint": "^4.6.1",
+    "eslint-config-airbnb-base": "^12.0.0",
+    "eslint-plugin-import": "^2.7.0"
+  }
+}
