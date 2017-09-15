@@ -29,7 +29,7 @@ const land11 = [1, 2, 1, 2]; // Should return 4
 const land12 = [1, 1, 1, 2, 2, 2, 1, 1, 1]; // Should return 3
 const land13 = [1, 2, 'a', 3]; // Should return err
 const land14 = [-1, -2, -3, -2, -1]; // Should return 3
-const land15 = [0, 1, 2, 1, 0, -1, 0, 1, 2, 3, 4, 5, 5, 5, 4, 3, 3]; // Should return 5
+const land15 = [0, 1, 2, 1, 0, -1, 0, 1, 2, 3, 4, 5, 5, 5, 4, 3, 3, 4]; // Should return 6
 
 function castleBuilder(array) {
   let castles = 0;
@@ -51,10 +51,17 @@ function castleBuilder(array) {
       return console.log('Error: There is some data in your array that is not a number.');
     }
 
+    // For the first one, build a castle if there isn't another one with the same height after, AND length is greater than 1.
+    // If the next one is the same value don't build the castle yet.
 
-    // For the first one, build a castle if there isn't another one with the same height after
+    if (index === 0 && heightAfter !== landHeight && array.length > 1) {
+      castles += 1;
+    }
 
-    if (index === 0 && heightAfter !== landHeight) {
+    // For the last one, build a castle, regardless of length.
+    // This will handle edge cases of array being only 1, or all the same integer.
+
+    if (index === array.length) {
       castles += 1;
     }
 
@@ -66,15 +73,9 @@ function castleBuilder(array) {
 
     // If it's a valley, build a castle
 
-    // if (landHeight < heightBefore && landHeight < heightAfter) {
-
-    // }
-
-    // If the point before is the same, and the point after is less, it's a peak, so build a castle.
-
-    // if (landHeight === heightBefore && landHeight > heightAfter) {
-    //   castles += 1;
-    // }
+    if (landHeight <= heightBefore && landHeight < heightAfter) {
+      castles += 1;
+    }
 
     console.log(`${heightBefore}|${landHeight}|${heightAfter}|          Castle Count = ${castles}`);
   }
