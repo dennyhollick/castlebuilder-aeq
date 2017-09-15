@@ -14,7 +14,6 @@
 
 const testData = require('./testData.js');
 
-
 function castleBuilder(array) {
   let castles = 0;
 
@@ -66,7 +65,7 @@ function castleBuilder(array) {
 }
 
 
-// Comment to NOT run tests.
+// Uncomment or Comment to run test based on test data.
 
 testData.forEach((test, index) => {
   const result = castleBuilder(test.data);
