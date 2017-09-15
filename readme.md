@@ -4,7 +4,10 @@ A simple command line app built on Node JS that calculates how many 'castles' yo
 
 The land data should be provided as a number in an array. eg `[1, 2, 3, 3, 4, 3, 2, 3]`
 
-Assumptions:
+![screenshot](https://github.com/dennyhollick/castlebuilder-aeq/blob/master/Aeq-castles.png)
+
+### Assumptions
+
 1. The beginning and end of array are considered either peaks or valleys, so a castle will be built (provided non empty).
 2. Integers can be both positive and negative
 3. Only one castle per valley or peak
@@ -13,6 +16,8 @@ Assumptions:
 6. Empty arrays will return an error
 7. Peak: A series of the same integer, or single integer where the integer before is lower, and the integer after lower. `[1,2,1]` <- 2 is a peak.
 8. Valley: A series of the same integer, or single integer where the integer before and after is higher `[1,0,1]` <- 0 is a valley
+
+Because this is a simple program, using mocha might be overkill - I created my own tests just to keep it simple. Comment or uncomment the forEach at the end of `castles.js` to run/disable the tests I created.
 
 ## Initialization
 
