@@ -15,21 +15,68 @@
 
 // Because this is a simple program, using mocha might be overkill - using some test data here instead to drive my development and console log output.
 
-const land1 = []; // Should return err
-const land2 = [1]; // Should return 1
-const land3 = [-1]; // Should return 1
-const land4 = [0]; // Should return 1
-const land5 = ['a']; // Should return err
-const land6 = [1, 1]; // Should return 1
-const land7 = [1, 2]; // Should return 2
-const land8 = [1, 2, 2]; // Should return 2
-const land9 = [2, 2, 2]; // Should return 1
-const land10 = [1, 2, 1]; // Should return 3
-const land11 = [1, 2, 1, 2]; // Should return 4
-const land12 = [1, 1, 1, 2, 2, 2, 1, 1, 1]; // Should return 3
-const land13 = [1, 2, 'a', 3]; // Should return err
-const land14 = [-1, -2, -3, -2, -1]; // Should return 3
-const land15 = [0, 1, 2, 1, 0, -1, 0, 1, 2, 3, 4, 5, 5, 5, 4, 3, 3, 4]; // Should return 6
+const testData = [
+  {
+    data: [],
+    expected: 'Should return err',
+  },
+  {
+    data: [1],
+    expected: 'Should return 1',
+  },
+  {
+    data: [-1],
+    expected: 'Should return 1',
+  },
+  {
+    data: [0],
+    expected: 'Should return 1',
+  },
+  {
+    data: ['a'],
+    expected: 'Should return err',
+  },
+  {
+    data: [1, 2],
+    expected: 'Should return 2',
+  },
+  {
+    data: [1, 1],
+    expected: 'Should return 1',
+  },
+  {
+    data: [1, 2, 2],
+    expected: 'Should return 2',
+  },
+  {
+    data: [2, 2, 2],
+    expected: 'Should return 1',
+  },
+  {
+    data: [1, 2, 1],
+    expected: 'Should return 3',
+  },
+  {
+    data: [1, 2, 1, 2],
+    expected: 'Should return 4',
+  },
+  {
+    data: [1, 1, 1, 2, 2, 2, 1, 1, 1],
+    expected: 'Should return 3',
+  },
+  {
+    data: [1, 2, 'a', 3],
+    expected: 'Should return err',
+  },
+  {
+    data: [-1, -2, -3, -2, -1],
+    expected: 'Should return 3',
+  },
+  {
+    data: [0, 1, 2, 1, 0, -1, 0, 1, 2, 3, 4, 5, 5, 5, 4, 3, 3, 4],
+    expected: 'Should return 6',
+  },
+];
 
 function castleBuilder(array) {
   let castles = 0;
@@ -37,7 +84,7 @@ function castleBuilder(array) {
   // Error handling: If nothing in the array, return an error.
 
   if (array.length <= 0) {
-    return console.log('Error: There is no data in the array');
+    return 'Error: There is no data in the array';
   }
 
   for (let index = 0; index < array.length; index += 1) {
@@ -48,7 +95,7 @@ function castleBuilder(array) {
     // Error handling: If the data isn't an integer, return an error message.
 
     if (typeof (landHeight) !== 'number') {
-      return console.log('Error: There is some data in your array that is not a number.');
+      return 'Error: There is some data in your array that is not a number.';
     }
 
     // For the first one, build a castle if there isn't another one with the same height after, AND length is greater than 1.
@@ -61,7 +108,7 @@ function castleBuilder(array) {
     // For the last one, build a castle, regardless of length.
     // This will handle edge cases of array being only 1, or all the same integer.
 
-    if (index === array.length) {
+    if (index === array.length - 1) {
       castles += 1;
     }
 
@@ -76,10 +123,14 @@ function castleBuilder(array) {
     if (landHeight <= heightBefore && landHeight < heightAfter) {
       castles += 1;
     }
-
-    console.log(`${heightBefore}|${landHeight}|${heightAfter}|          Castle Count = ${castles}`);
+    // console.log(`index = ${index} | array.length = ${array.length}`)
+    // console.log(`${heightBefore}|${landHeight}|${heightAfter}|          Castle Count = ${castles}`);
   }
+  return castles;
 }
 
-castleBuilder(land15);
+testData.forEach((test, index) => {
+  const result = castleBuilder(test.data);
+  console.log(`Test #${index}: ${result} | ${test.expected}`);
+});
 
