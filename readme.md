@@ -1,8 +1,10 @@
 ## The Castle Builder
 
-A simple command line app built on Node JS that calculates how many 'castles' you should build, given you want to build a single castle for each valley and peak. 
+A simple command line app built on Node JS that calculates how many 'castles' you should build, given you want to build a single castle for each 'valley' and 'peak' in an array. 
 
-The land data should be provided as a number in an array. eg `[1, 2, 3, 3, 4, 3, 2, 3]`
+The land data should be provided as a number in an array. eg `[1, 2, 3, 3, 4, 3, 2, 3]` and is accepted into the function to return the number of castles that should be built.
+
+Below is the output of test data scenarios to run the function through it's paces. 
 
 ![screenshot](https://github.com/dennyhollick/castlebuilder-aeq/blob/master/Aeq-castles.png)
 
