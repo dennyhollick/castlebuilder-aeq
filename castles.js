@@ -1,17 +1,7 @@
-// Assumptions:
-// 1. The beginning and end of array are considered either peaks or valleys (provided non empty)
-// 2. Integers can be both positive and negative
-// 3. Only one castle per valley or peak
-// 4. Only numbers should be in the data - no strings etc. - Anything else will return an error msg.
-// 5. If there are a group of integers that are the same, then the castle will be built on the last number in that series.
-// 6. Empty arrays or arrays without the correct data will return an error
-// Peak: A series of the same integer, or single integer where the integer before is lower, and the integer after lower.
-// Valley: A series of the same integer, or single integer where the integer before and after is higher
-
-
 // Because this is a simple program, using mocha might be overkill - using some test data here instead to drive my development.
 // Comment or uncomment the forEach at the end to run/disable the tests I created.
 
+const colors = require('colors');
 const testData = require('./testData.js');
 
 function castleBuilder(array) {
@@ -64,11 +54,14 @@ function castleBuilder(array) {
   return castles;
 }
 
-
 // Uncomment or Comment to run test based on test data.
 
 testData.forEach((test, index) => {
   const result = castleBuilder(test.data);
-  console.log(`Test #${index}: ${result} | ${test.expected}`);
+  if (result === test.expected || (typeof (result) === 'string' && typeof (test.expected) === 'string')) {
+    console.log(`${(`Test #${index}:`.yellow) + 'PASSED'.green} - Result: ${result} | Expected: ${test.expected}`);
+  } else {
+    console.log(`${(`Test #${index}:`.yellow) + 'FAILED'.red} - Result: ${result} | Expected: ${test.expected}`);
+  }
 });
 
