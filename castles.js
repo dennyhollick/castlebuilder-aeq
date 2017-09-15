@@ -10,7 +10,7 @@
 
 
 // Because this is a simple program, using mocha might be overkill - using some test data here instead to drive my development.
-// Comment or uncomment the forEach at the end to run the tests based on the testdata file I created.
+// Comment or uncomment the forEach at the end to run/disable the tests I created.
 
 const testData = require('./testData.js');
 
@@ -66,10 +66,10 @@ function castleBuilder(array) {
 }
 
 
-// Uncomment to run test based on test data.
+// Comment to NOT run tests.
 
-// testData.forEach((test, index) => {
-//   const result = castleBuilder(test.data);
-//   console.log(`Test #${index}: ${result} | ${test.expected}`);
-// });
+testData.forEach((test, index) => {
+  const result = castleBuilder(test.data);
+  console.log(`Test #${index}: ${result} | ${test.expected}`);
+});
 
